@@ -1,12 +1,13 @@
 package com.servbyte.ecommerce.controllers;
 
-import com.servbyte.ecommerce.entities.Cities;
+import com.servbyte.ecommerce.dtos.RestaurantDto;
 import com.servbyte.ecommerce.service.RestaurantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 
 @Controller
@@ -22,5 +23,16 @@ public class RestaurantController {
     @GetMapping("/all-cities")
     public ResponseEntity<?> fetchAllCities(){
         return ResponseEntity.ok(restaurantService.fetchAllCities());
+    }
+
+    @PostMapping("/find/{city}")
+    public ResponseEntity<?> fetchRestaurantsByCities(@RequestParam String city){
+        return ResponseEntity.ok(restaurantService.findRestaurantsByCity(city));
+    }
+
+    @PostMapping("/register")
+    public ResponseEntity registerRestaurants(@RequestBody Optional<RestaurantDto> restaurantDto){
+        restaurantService.registerRestaurant(restaurantDto);
+        return ResponseEntity.ok("Restaurant registered successfully");
     }
 }

@@ -45,7 +45,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
     private JwtTokenService jwtTokenService;
 
-    private static final List<String> roleList = Arrays.asList("USER", "RESTAURANT", "LOGISTICS");
+    private final List<String> roleList = Arrays.asList("USER", "RESTAURANT", "LOGISTICS");
 
     private Logger logger = LoggerFactory.getLogger(getClass());
 
