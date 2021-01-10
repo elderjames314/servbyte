@@ -22,9 +22,6 @@ public class ApiAdvice {
 
     private Logger logger = LoggerFactory.getLogger(getClass());
 
-
-
-
     @ExceptionHandler({BadRequestException.class})
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ResponseEntity<ApiResponse> handleBadRequestException(BadRequestException e) {
