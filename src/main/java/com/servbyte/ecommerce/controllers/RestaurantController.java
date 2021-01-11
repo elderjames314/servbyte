@@ -7,8 +7,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
-
 
 @Controller
 @RequestMapping("/restaurants")
@@ -31,8 +29,13 @@ public class RestaurantController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity registerRestaurants(@RequestBody Optional<RestaurantDto> restaurantDto){
+    public ResponseEntity registerRestaurants(@RequestBody RestaurantDto restaurantDto){
         restaurantService.registerRestaurant(restaurantDto);
         return ResponseEntity.ok("Restaurant registered successfully");
+    }
+
+    @GetMapping("/all")
+    public ResponseEntity fetchAll(){
+        return ResponseEntity.ok(restaurantService.getAllRestaurants());
     }
 }
