@@ -72,11 +72,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/configuration/security",
                         "/swagger-resources/configuration/ui",
                         "/swagger-ui.html",
-                        "/webjars/**")
+                        "/webjars/**",
+                        "h2-console/**")
                 .permitAll()
                 .antMatchers( "/roles/**").permitAll()
                 .antMatchers(HttpMethod.POST, "/users/**").permitAll()
                 .antMatchers(HttpMethod.POST, "/users/auth/**").permitAll()
+                .antMatchers(HttpMethod.GET, "/h2-console/**").permitAll()
+                .antMatchers(HttpMethod.POST, "/h2-console/**").permitAll()
                 // all other requests need to be authenticated
                 .anyRequest().authenticated().and()
                 .csrf().disable().sessionManagement()
@@ -92,7 +95,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/v2/api-docs", "/configuration/ui", "/swagger-resources/**", "/configuration/**", "/swagger-ui.html", "/webjars/**");
+        web.ignoring().antMatchers("/v2/api-docs", "/configuration/ui", "/swagger-resources/**", "/configuration/**", "/swagger-ui.html", "/webjars/**", "h2-console/**");
 
     }
 }
