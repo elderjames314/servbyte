@@ -70,6 +70,11 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         user.setPassword(password);
         user.setCreatedDate(LocalDateTime.now());
         userRepository.save(user);
+        List<ApplicationUserResponse> res = findAllUsers();
+        for (ApplicationUserResponse applicationUserResponse : res) {
+            System.out.println(applicationUserResponse);
+            System.out.println("****************");
+        }
     }
 
 
@@ -89,6 +94,10 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     public ApplicationUser findUserByEmail(String email) {
         if(email != null) return userRepository.findByEmail(email);
         else throw new BadRequestException(ApiErrorCodes.INVALID_REQUEST.getKey(), "Email connot be empty");
+    }
+
+    public List<ApplicationUser> getAllUsers() {
+        return userRepository.findAll();
     }
 
 
@@ -126,6 +135,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
             throw new BadCredentialsException("Incorrect credentials ", e);
         }
     }
+
 
 }
 

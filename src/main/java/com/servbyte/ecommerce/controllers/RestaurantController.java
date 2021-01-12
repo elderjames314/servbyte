@@ -8,7 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 
-@Controller
+@RestController
 @RequestMapping("/restaurants")
 public class RestaurantController {
     private final RestaurantService restaurantService;
@@ -29,13 +29,13 @@ public class RestaurantController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity registerRestaurants(@RequestBody RestaurantDto restaurantDto){
+    public ResponseEntity<?> registerRestaurants(@RequestBody RestaurantDto restaurantDto){
         restaurantService.registerRestaurant(restaurantDto);
         return ResponseEntity.ok("Restaurant registered successfully");
     }
 
     @GetMapping("/all")
-    public ResponseEntity fetchAll(){
+    public ResponseEntity<?> fetchAll(){
         return ResponseEntity.ok(restaurantService.getAllRestaurants());
     }
 }

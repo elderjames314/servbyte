@@ -8,4 +8,7 @@ public class ApplicationUserResponse {
     private String lastName;
     private String city;
     private String phoneNumber;
+
+
+
 }

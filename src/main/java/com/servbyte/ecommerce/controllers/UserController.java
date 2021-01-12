@@ -4,16 +4,17 @@ import com.servbyte.ecommerce.dtos.ApplicationUserDto;
 import com.servbyte.ecommerce.dtos.ApplicationUserLoginDto;
 import com.servbyte.ecommerce.service.UserService;
 import com.servbyte.ecommerce.utility.AuthenticatedUser;
+
+import org.hibernate.annotations.common.util.impl.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-@Controller
+@RestController
 @RequestMapping("/users")
 public class UserController {
     private final UserService userService;
-
 
     @Autowired
     public UserController(UserService userService){
@@ -46,4 +47,6 @@ public class UserController {
     public ResponseEntity<?>  getLoggedInUser() {
         return ResponseEntity.ok(AuthenticatedUser.getLoggedInUser());
     }
+
+   
 }
