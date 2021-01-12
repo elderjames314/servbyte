@@ -15,4 +15,5 @@ public class Logistics extends AbstractEntity{
     private String logo;
     private String companyEmail;
     private String companyPhoneNumber;
+    private String companyCity;
 }

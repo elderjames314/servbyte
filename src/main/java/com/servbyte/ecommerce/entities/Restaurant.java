@@ -23,7 +23,7 @@ public class Restaurant extends AbstractEntity{
     @ManyToOne
     private ApplicationUser applicationUser;
     @OneToMany
-    Collection<RestaurantMenu> menuCollections;
+    List<RestaurantMenu> menuCollections;
 
 
 }

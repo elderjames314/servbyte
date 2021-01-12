@@ -6,11 +6,11 @@ import com.servbyte.ecommerce.entities.Restaurant;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public interface RestaurantService {
-     void registerRestaurant(Optional<RestaurantDto> restaurantDto);
+     void registerRestaurant(RestaurantDto restaurantDto);
+     List<Restaurant> getAllRestaurants();
      List<Restaurant> findRestaurantsByCity(String city);
      List<Cities> fetchAllCities();
 }

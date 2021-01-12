@@ -1,5 +1,7 @@
 package com.servbyte.ecommerce.dtos.response;
 
+import com.servbyte.ecommerce.dtos.Error;
+
 import java.util.Arrays;
 import java.util.List;
 
